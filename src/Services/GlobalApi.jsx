@@ -12,6 +12,7 @@
  const UpdateNominee = baseURL + '/update-nominee';
  const Announcement = baseURL + '/announcement';
  const updateProfile = baseURL + '/update-profile';
+ const addPhoto = baseURL + '/add-photo';
 
  export {
     LoginApi,
@@ -24,4 +25,5 @@
     Announcement,
     UpdateNominee,
     updateProfile,
+    addPhoto
  }

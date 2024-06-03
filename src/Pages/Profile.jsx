@@ -100,6 +100,49 @@ const Profile = () => {
             console.log(error);
         }
     }
+
+    const uploadImage = async (base64Image) => {
+        try {
+            const token = localStorage.getItem('token');
+            const imageData = "data:image/jpeg;base64," + base64Image;
+            const response = await fetch('https://phplaravel-1248874-4475389.cloudwaysapps.com/api/add-photo', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ photo: imageData })
+            });
+            const responseData = await response.json();
+            console.log(responseData); 
+            if (responseData.success) {
+                const imageUrl = responseData.data.photo;
+
+                localStorage.setItem('uploadedImageUrl', imageUrl);
+            } else {
+                console.error('Error uploading image:', responseData.message);
+            }
+        } catch (error) {
+            console.error('Error uploading image:', error);
+        }
+    };
+    
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                const base64String = reader.result.split(',')[1];
+                console.log(base64String);
+                uploadImage(base64String); 
+                const updatedUserData = { ...userData, photo: reader.result };
+                setUserData(updatedUserData);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+    
     // handle father name
     const handleFatherSubmit = async (e) => {
         e.preventDefault();
@@ -163,6 +206,7 @@ const Profile = () => {
                     <div className="">
                         <h2><strong>{userData.name}</strong></h2>
                         <p>{userData.cnic}</p>
+                        <input type="file" accept="image/*" onChange={handleFileChange} />
                     </div>
                 </div>
                 <div className="bg-white shadow-lg rounded-xl mt-4 p-4 md:w-1/2" onClick={handleFather}>
