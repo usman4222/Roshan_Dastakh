@@ -9,6 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 import {
     Button, Dialog, DialogHeader, DialogBody, DialogFooter,
 } from "@material-tailwind/react";
+import { FaPencilAlt } from "react-icons/fa";
 
 const Profile = () => {
     const navigate = useNavigate();
@@ -61,6 +62,7 @@ const Profile = () => {
         // Clear authentication-related data from local storage
         localStorage.removeItem('token');
         localStorage.setItem('isLoggedIn', 'false');
+
         navigate('/login');
     };
     const handlePhone = (e) => {
@@ -201,11 +203,27 @@ const Profile = () => {
         {userData && (
             <div className="container mx-auto p-4">
                 <div className="md:flex gap-4 md:text-left text-center">
-                    <img src={userData.photo} className="w-16 h-16 md:mx-0 mx-auto rounded-full" alt="" />
+                <div className="relative w-32 h-32 mx-auto md:mx-0">
+                        <input
+                            type="file"
+                            accept="image/*"
+                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                            onChange={handleFileChange}
+                        />
+                        <div className="w-full h-full bg-gray-300 rounded-full overflow-hidden flex items-center justify-center">
+                            {userData.photo ? (
+                                <img src={userData.photo} alt="Profile" className="w-full h-full object-cover" />
+                            ) : (
+                                <span className="text-gray-500">Click to select image</span>
+                            )}
+                        </div>
+                        <div className="absolute cursor-pointer bottom-3 right-0 p-1.5 bg-blue-500 rounded-full">
+                            <FaPencilAlt className="text-white text-[13px]" />
+                        </div>
+                    </div>
                     <div className="">
                         <h2><strong>{userData.name}</strong></h2>
                         <p>{userData.cnic}</p>
-                        <input type="file" accept="image/*" onChange={handleFileChange} />
                     </div>
                 </div>
                 <div className="bg-white shadow-lg rounded-xl mt-4 p-4 md:w-1/2" onClick={handleFather}>
