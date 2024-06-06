@@ -61,7 +61,6 @@ const Profile = () => {
         // Clear authentication-related data from local storage
         localStorage.removeItem('token');
         localStorage.setItem('isLoggedIn', 'false');
-
         navigate('/login');
     };
     const handlePhone = (e) => {
