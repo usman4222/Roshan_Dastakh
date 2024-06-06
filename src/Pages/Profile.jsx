@@ -4,7 +4,7 @@ import { IoLocationSharp, IoLogOutOutline } from "react-icons/io5";
 import { FaPhone } from "react-icons/fa6";
 import { GoPlus } from "react-icons/go";
 import { IoIosLock } from "react-icons/io";
-import { updateProfile, userData as userDataEndpoint } from "../Services/GlobalApi";
+import { addPhoto, updateProfile, userData as userDataEndpoint } from "../Services/GlobalApi";
 import { Link, useNavigate } from "react-router-dom";
 import {
     Button, Dialog, DialogHeader, DialogBody, DialogFooter,
@@ -106,7 +106,7 @@ const Profile = () => {
         try {
             const token = localStorage.getItem('token');
             const imageData = "data:image/jpeg;base64," + base64Image;
-            const response = await fetch('https://phplaravel-1248874-4475389.cloudwaysapps.com/api/add-photo', {
+            const response = await fetch(addPhoto, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -115,7 +115,7 @@ const Profile = () => {
                 body: JSON.stringify({ photo: imageData })
             });
             const responseData = await response.json();
-            console.log(responseData); 
+            console.log(responseData);
             if (responseData.success) {
                 const imageUrl = responseData.data.photo;
 
@@ -127,7 +127,7 @@ const Profile = () => {
             console.error('Error uploading image:', error);
         }
     };
-    
+
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
@@ -136,14 +136,14 @@ const Profile = () => {
             reader.onloadend = () => {
                 const base64String = reader.result.split(',')[1];
                 console.log(base64String);
-                uploadImage(base64String); 
+                uploadImage(base64String);
                 const updatedUserData = { ...userData, photo: reader.result };
                 setUserData(updatedUserData);
             };
             reader.readAsDataURL(file);
         }
     };
-    
+
     // handle father name
     const handleFatherSubmit = async (e) => {
         e.preventDefault();
@@ -203,11 +203,11 @@ const Profile = () => {
         {userData && (
             <div className="container mx-auto p-4">
                 <div className="md:flex gap-4 md:text-left text-center">
-                <div className="relative w-32 h-32 mx-auto md:mx-0">
+                    <div className="relative w-32 h-32 mx-auto md:mx-0">
                         <input
                             type="file"
                             accept="image/*"
-                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                            className="absolute inset-0 w-16 h-16 opacity-0 cursor-pointer"
                             onChange={handleFileChange}
                         />
                         <div className="w-full h-full bg-gray-300 rounded-full overflow-hidden flex items-center justify-center">

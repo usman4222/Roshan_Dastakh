@@ -61,11 +61,11 @@ const ProfitHistroy = () => {
 
         }
     };
-
+    // 34603-21521423
     return <div>
         <div className="container mx-auto py-5 min-h-[100vh]">
 
-        <h4 className="mb-4 text-center">Profit History</h4>
+        <h4 className="mb-4 text-center ">Profit History</h4>
             <p className="my-4 text-center text-[10px]">swipe down or refresh</p>
             <Card className="h-full w-full overflow-auto">
                 <table className="w-full min-w-max table-auto text-left">

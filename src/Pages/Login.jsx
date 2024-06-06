@@ -26,8 +26,8 @@ const Login = () => {
             if (input.length > 5) {
                 input = input.slice(0, 5) + '-' + input.slice(5, 12) + '-' + input.slice(12, 13);
             }
+            
         }
-
         event.target.value = input;
         setPreviousValue(input);
         setFormData({ ...formData, cnic: input });
@@ -39,7 +39,12 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        
+        const cnicDigits = formData.cnic.replace(/\D/g, '');
+        if (cnicDigits.length !== 13) {
+            setErrorMessage('Invalid CNIC. Please enter a 13-digit CNIC.');
+            return;
+        }
         try {
             const formDataToSend = new FormData();
             formDataToSend.append('cnic', formData.cnic);
