@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Select, Option, Card, Typography } from "@material-tailwind/react";
 import { allTransactions } from "../Services/GlobalApi";
-const TABLE_HEAD = ["New Profit", "Old Profit", "Release Date"];
+const TABLE_HEAD = ["New Profit", "Old Amount", "Release Date"];
 
 const TABLE_ROWS = [
     {
