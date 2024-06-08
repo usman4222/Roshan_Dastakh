@@ -203,16 +203,16 @@ const Profile = () => {
         {userData && (
             <div className="container mx-auto p-4">
                 <div className="md:flex gap-4 md:text-left text-center">
-                    <div className="relative w-32 h-32 mx-auto md:mx-0">
+                    <div className="relative w-32 h-32 mx-auto md:mx-0 cursor-pointer">
                         <input
                             type="file"
                             accept="image/*"
-                            className="absolute inset-0 w-16 h-16 opacity-0 cursor-pointer"
+                            className="absolute inset-0 w-32 h-32 opacity-0 cursor-pointer"
                             onChange={handleFileChange}
                         />
-                        <div className="w-full h-full bg-gray-300 rounded-full overflow-hidden flex items-center justify-center">
+                        <div className=" bg-gray-300 rounded-full overflow-hidden flex items-center justify-center">
                             {userData.photo ? (
-                                <img src={userData.photo} alt="Profile" className="w-full h-full object-cover" />
+                                <img src={userData.photo} alt="Profile" className=" object-cover" />
                             ) : (
                                 <span className="text-gray-500">Click to select image</span>
                             )}

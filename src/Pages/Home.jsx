@@ -31,8 +31,8 @@ const Home = () => {
         getAnnoucement();
     }, [])
 
-    const getAnnoucement = async() => {
-        try{
+    const getAnnoucement = async () => {
+        try {
             const response = await fetch(Announcement, {
                 method: 'POST'
             });
@@ -48,18 +48,18 @@ const Home = () => {
         <div className="container mx-auto pt-12 pb-3">
             <div className="md:grid grid-cols-3 gap-5">
                 <div className="flex justify-between bg-light-blue-800 rounded-lg py-2 px-4 text-white md:mb-0 mb-4">
-                    {userData && ( <>
-                    <div className="">
+                    {userData && (<>
+                        <div className="">
                             <h4 className="text-[22px] font-semibold mb-1">{userData.name} </h4>
-                        {/* <h4 className="text-[22px] font-semibold mb-1">Muhammad Hussain </h4> */}
-                        <img src={chip} className="w-8 mb-2" alt="" />
-                        <p className="text-[10px]">Current (Active) Investment</p>
-                        <h3 className="text-[22px] font-semibold">Rs. {userData.investment.active_investment}</h3>
-                    </div>
-                    <div className="">
-                        <img src={logo} className="w-20 mx-auto mb-8" alt="" />
-                        <p className=" font-medium">{userData.lc_id}</p>
-                    </div>
+                            {/* <h4 className="text-[22px] font-semibold mb-1">Muhammad Hussain </h4> */}
+                            <img src={chip} className="w-8 mb-2" alt="" />
+                            <p className="text-[10px]">Current (Active) Investment</p>
+                            <h3 className="text-[22px] font-semibold">Rs. {userData.investment.active_investment}</h3>
+                        </div>
+                        <div className="">
+                            <img src={logo} className="w-20 mx-auto mb-8" alt="" />
+                            <p className=" font-medium">{userData.lc_id}</p>
+                        </div>
                     </>
                     )}
                 </div>
@@ -81,28 +81,34 @@ const Home = () => {
 
                     </div>
                 </div>
-                <div className="">
-                    <p className="mb-3 text-gray-400">Pending Amounts</p>
-                    <div className="bg-white gap-5 rounded-lg shadow-md py-3 px-4">
-                        <div className="flex justify-between mb-1">
-                            <p>Available Profit</p>
-                            <p>Rs.0</p>
-                        </div>
-                        <div className="flex justify-between mb-1">
-                            <p>In-Active Investment</p>
-                            <p>Rs.0</p>
-                        </div>
-                        <div className="flex justify-between">
-                            <p className=" font-medium">Expected Sum</p>
-                            <p className=" font-medium text-yellow-400">Rs.0</p>
+                {userData && (
+                    <div className="">
+                        <p className="mb-3 text-gray-400">Pending Amounts</p>
+                        <div className="bg-white gap-5 rounded-lg shadow-md py-3 px-4">
+                            <div className="flex justify-between mb-1">
+                                <p>Available Profit</p>
+                                <p>Rs.{userData.investment.active_investment}</p>
+                            </div>
+                            <div className="flex justify-between mb-1">
+                                <p>In-Active Investment</p>
+                                <p>Rs.{userData.investment.in_active_investment}</p>
+                            </div>
+                            <div className="flex justify-between mb-1">
+                                <p>Profit</p>
+                                <p>Rs.{userData.investment.profit}</p>
+                            </div>
+                            <div className="flex justify-between">
+                                <p className=" font-medium">Expected Sum</p>
+                                <p className=" font-medium text-yellow-400">Rs.{userData.investment.active_investment + userData.investment.in_active_investment + userData.investment.profit}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                )}
             </div>
             <p className="my-3 text-gray-400">Announcement</p>
             <div className="flex bg-white gap-5 rounded-lg shadow-md px-3 py-7 md:w-1/2">
                 <img src={announcement} className="w-20" alt="" />
-                {allAnnouncement &&(
+                {allAnnouncement && (
                     <p>{allAnnouncement.data} </p>
 
                 )}
