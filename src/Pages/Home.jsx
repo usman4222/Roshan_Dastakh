@@ -66,7 +66,7 @@ const Home = () => {
                 <div className="md:mb-0 mb-4">
                     <p className="mb-3 text-gray-400">Add Requests</p>
                     <div className="flex text-white gap-5">
-                        <Link to={'/investment'} className=" bg-yellow-600  rounded-lg p-4 w-1/2">
+                        <Link to={'/investment'} className=" bg-yellow-800  rounded-lg p-4 w-1/2">
                             <div className="flex gap-4">
                                 <img src={invest} alt="" className="w-5 h-5" />
                                 <p className="my-auto">INVEST</p>
@@ -99,7 +99,7 @@ const Home = () => {
                             </div>
                             <div className="flex justify-between">
                                 <p className=" font-medium">Expected Sum</p>
-                                <p className=" font-medium text-yellow-400">Rs.{userData.investment.active_investment + userData.investment.in_active_investment + userData.investment.profit}</p>
+                                <p className=" font-medium text-yellow-800">Rs.{userData.investment.active_investment + userData.investment.in_active_investment + userData.investment.profit}</p>
                             </div>
                         </div>
                     </div>
