@@ -86,7 +86,7 @@ const Home = () => {
                         <p className="mb-3 text-gray-400">Pending Amounts</p>
                         <div className="bg-white gap-5 rounded-lg shadow-md py-3 px-4">
                             <div className="flex justify-between mb-1">
-                                <p>Available Profit</p>
+                                <p>Active Amount</p>
                                 <p>Rs.{userData.investment.active_investment}</p>
                             </div>
                             <div className="flex justify-between mb-1">
