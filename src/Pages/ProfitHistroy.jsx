@@ -93,7 +93,7 @@ const ProfitHistroy = () => {
                                 <tr key={item.id}>
                                     <td className={`${classes} bg-blue-gray-50/50 shadow-sm`}>
                                         <Typography variant="small" color="blue-gray" className="font-normal">
-                                            {item.new_balance}
+                                            {item.amount}
                                         </Typography>
                                     </td>
                                     <td className={classes}>
