@@ -51,7 +51,7 @@ const NavBar = ({ userData }) => {
                 color="blue-gray"
                 className="p-1 font-normal"
             >
-                Home
+                <Link to='/'>Home</Link>
             </Typography>
 
         </ul>
@@ -64,7 +64,7 @@ const NavBar = ({ userData }) => {
 
                         className="mr-4 cursor-pointer py-1.5 font-medium"
                     >
-                        <Link to={'/'}>Life Changer</Link>
+                        <Link to={'/'}>Roshan Dastak</Link>
                     </Typography>
                     <div className="flex items-center gap-4">
                         <div className="mr-4 hidden lg:block">{navList}</div>

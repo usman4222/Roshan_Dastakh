@@ -13,7 +13,7 @@ import { FaPencilAlt } from "react-icons/fa";
 
 const Profile = () => {
     const navigate = useNavigate();
-    const [userData, setUserData] = useState(''); // Use userData for storing user data
+    const [userData, setUserData] = useState(''); 
     const [isLoading, setIsLoading] = useState(false);
     const [open, setOpen] = React.useState(false);
     const [openPin, setOpenPin] = React.useState(false);
@@ -59,7 +59,6 @@ const Profile = () => {
         }
     };
     const handleLogout = () => {
-        // Clear authentication-related data from local storage
         localStorage.removeItem('token');
         localStorage.setItem('isLoggedIn', 'false');
 

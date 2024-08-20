@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import logo from "../assets/images/logo_name.png";
+import logo from "../assets/log.png";
 import chip from "../assets/images/chip_.png";
 import invest from "../assets/images/invest.png";
 import withdraw from "../assets/images/round_arrow_downward.png";
@@ -47,7 +47,7 @@ const Home = () => {
     return <div>
         <div className="container mx-auto pt-12 pb-3">
             <div className="md:grid grid-cols-3 gap-5">
-                <div className="flex justify-between bg-light-blue-800 rounded-lg py-2 px-4 text-white md:mb-0 mb-4">
+                <div className="flex justify-between bg-light-blue-600 rounded-lg py-2 px-4 text-white md:mb-0 mb-4">
                     {userData && (<>
                         <div className="">
                             <h4 className="text-[22px] font-semibold mb-1">{userData.name} </h4>
